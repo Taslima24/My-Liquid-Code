@@ -1,0 +1,57 @@
+ <div class="row pb-5">
+        <div class="col-md-5">
+          <div class="single-product-images">
+            {% for image in product.images %}😊
+            <div data-thumb=" {{ image.src | img_url: "master"}}">😊
+              <img class="img-fluid" src="{{ image.src | img_url: "master"}}">😊
+            </div>
+           
+            {% endfor %}😊
+          </div>
+        </div>
+
+        <div class="col-md-7">
+          
+          <div class="single-product-details">
+            <h2>{{product.title😊}}</h2>
+            <p class="product-price">{{product.price | money}}😊</p>
+            
+            <p class="product-description">
+             {{product.description}}😊
+             
+            </p>
+            <form method="POST" action="/cart/add" >😊
+             
+            
+            {% unless product.has_only_default_variant %}😊
+            {% for product_option in product.options_with_values %}😊
+            
+            <div class="product-category">
+              <span>{{product_option.name}}:😊</span>
+              <select class="form-control" 😊data-index="option{{forloop.index}}" > 
+                
+                {% for value in product_option.values %}
+                <option 😊value="{{value | escape }}" 😊{% if product_option.selected_value == value %}
+                 selected="selected"😊 {% endif %}>{{value}}😊</option>
+                {% endfor %}😊
+              </select>
+            </div>
+            {% endfor %}😊
+            {% endunless %}😊
+            
+            
+            
+            <div class="product-quantity">
+              <span>Quantity:</span>
+              <input min="1" type="number" id="quantity" name="quantity" value="1" />
+            </div>
+            
+            <div class="product-category">
+              
+              <span>Categories:</span>
+              <ul>
+                {% for collection in product.collections %}😊
+                <li><a href="{{collection.url}}">{{collection.title}}</a></li>😊
+                {% endfor %}😊
+              </ul>
+            </div>
