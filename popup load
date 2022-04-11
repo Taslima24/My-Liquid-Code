@@ -1,1 +1,94 @@
-window.addEventListener("load", function(){    setTimeout(        function open(event){            document.querySelector(".bm-seeking-wine-lovers-popup").style.display = "block";        },        5000    );  });
+.bm_guide_stage_accordion {
+  background-color: #fff;
+  color: #003366;
+  cursor: pointer;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 51, 102, 0.35);
+  border-radius: 0;
+  padding: 11px 0;
+  margin: 0;
+  position: relative;
+}
+.bm-collection-guide-stage {
+  padding-bottom: 31px;
+}
+button.bm_guide_stage_accordion:hover {
+  background: none;
+  box-shadow: none;
+}
+
+.bm_stage_guide_content {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+  padding-right: 15px;
+  padding-left: 0;
+}
+.bm_guide_stage_accordion:after {
+  content: "";
+  position: absolute;
+  margin-left: 5px;
+  background: url(https://cdn.shopify.com/s/files/1/0499/3594/1800/files/Vector_7_1a1a76a2-de36-4361-8fb1-9b2a1db5c1cd.png?v=1649665838);
+  background-repeat: no-repeat;
+  width: 14px;
+  height: 14px;
+  background-size: contain;
+  top: 26px;
+  right: 3px;
+}
+
+.bm_guide_stage_active:after {
+  content: "";
+  position: absolute;
+  margin-left: 5px;
+  background: url(https://cdn.shopify.com/s/files/1/0499/3594/1800/files/Vector_7_1a1a76a2-de36-4361-8fb1-9b2a1db5c1cd.png?v=1649665838);
+  background-repeat: no-repeat;
+  width: 14px;
+  height: 14px;
+  background-size: contain;
+  top: 17px;
+  right: 3px;
+  transform: rotate(180deg);
+}
+
+.bm-collection-stage-guide-popup{
+  display:none;
+}
+
+
+
+
+
+
+
+
+
+<script>
+
+  window.addEventListener("load", function()
+                          {    setTimeout(        
+                            function open(event){           
+                              document.querySelector(".bm-collection-stage-guide-popup").style.display = "block";},        
+                            1000    );  
+                          });
+  
+  document.querySelector(".bm-stage-guide-close").addEventListener("click", function(){
+      document.querySelector(".bm-collection-stage-guide-popup").style.display = "none";
+  });
+
+  var acc = document.getElementsByClassName("bm_guide_stage_accordion");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("bm_guide_stage_active");
+      var bm_stage_guide_content = this.nextElementSibling;
+      if (bm_stage_guide_content.style.display === "block") {
+        bm_stage_guide_content.style.display = "none";
+      } else {
+        bm_stage_guide_content.style.display = "block";
+      }
+    });
+  }
+</script>
