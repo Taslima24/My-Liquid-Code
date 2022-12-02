@@ -1,0 +1,10 @@
+# My-Liquid-Code
+function  aaaa() {
+  if ($(this).width() < 768) {
+    // code
+  } else {
+    //code 
+  }
+}
+aaaa();
+$(window).resize(aaaa);
