@@ -1,0 +1,128 @@
+<div class="cf15-our-values">
+  <div class="cf15-our-values-inner">
+    {% if section.settings.cf15_value_title != blank %}
+     <h2>{{ section.settings.cf15_value_title }}</h2>
+    {% endif %}
+    <div class="cf15-our-values-main">
+    {% for block in section.blocks %}
+      <div class="cf15-our-values-content {% if block.settings.image_align == "left" %}cf15-our-values-content-left{% endif %}">
+          <div class="cf15-our-values-left">
+            {% if block.settings.cf16_content_title != blank %}
+             <h2 class="cf15-title">{{ block.settings.cf16_content_title }}</h2>
+            {% endif %}
+            {% if block.settings.cf16_value_description != blank %}
+             <p class="cf15-item-info">{{ block.settings.cf16_value_description }}</p>
+            {% endif %}
+          </div>
+          <div class="cf15-our-values-right">
+            <div class="cf15-our-values-right-img cf15-our-values-right-img-{{ forloop.index }} ">
+              {% if block.settings.cf16_value_img != blank %}
+               <img src="{{ block.settings.cf16_value_img | img_url:'master' }}" class="cf15-our-values-image" alt="{{ block.settings.cf16_value_img.alt }}" />
+              {% endif %}
+            </div>
+          </div>
+       </div>
+      <style>
+        .cf15-our-values-right-img-{{ forloop.index }} {
+          border: {{ block.settings.cf15_img_border_height }}px solid {{ block.settings.cf15_img_border_color }};
+        }
+      </style>
+    {% endfor %}
+    </div>
+ </div>
+</div>
+<style>
+.cf15-our-values {
+    border-bottom: {{section.settings.cf15_border_bottom_height}}px solid {{section.settings.cf15_border_bottom_color}};
+}
+</style>
+
+{% schema %}
+  {
+    "name": "Our Values",
+    "settings": [
+      {
+        "type": "text",
+        "id": "cf15_value_title",
+        "label": "Title"
+      },
+      {
+        "type": "range",
+        "id": "cf15_border_bottom_height",
+        "label": "Border Height",
+        "min": 20,
+        "max": 60,
+        "step": 5,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "cf15_border_bottom_color",
+        "label": "Border Color"
+      }
+    ],
+  "blocks": [
+    {
+      "type": "title",
+      "name": "Content",
+	  "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "cf16_content_title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "cf16_value_description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "cf16_value_img",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "image_align",
+          "label": "Image alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+    	  "default": "right"
+        },
+        {
+          "type": "color",
+          "id": "cf15_img_border_color",
+          "label": "Border Color"
+        },
+        {
+          "type": "range",
+          "id": "cf15_img_border_height",
+          "label": "Border Height",
+          "min": 15,
+          "max": 60,
+          "step": 5,
+          "default": 15,
+          "unit": "px"
+        }
+      ]
+    }
+  ],
+  "presets": [
+	{
+    "name": "CF15 Our Values",
+    "category": "Image",
+    "blocks": [
+    ]
+  }]
+  }
+{% endschema %}
