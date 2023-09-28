@@ -1,0 +1,33 @@
+function  aaaa() {
+  if ($(this).width() < 959) {
+    function addCF12Content() {
+      var sort = $('select.js-collection-sort');
+      sort.find('option[value="best-selling"]').text("Best Sellers");
+      sort.find('option[value="created-descending"]').text("New Arrivals");
+    }
+    addCF12Content();
+  } else {
+    function addCF12Content() {
+      var sort = $('select.js-collection-sort');
+      sort.find('option[value="best-selling"]').text("Top Selling");
+      sort.find('option[value="created-descending"]').text("Date, new to old");
+    }
+    addCF12Content();
+  }
+}
+aaaa();
+$(window).resize(aaaa);
+
+
+
+
+
+
+
+for window
+------
+$(document).ready(function () {
+      if ($(window).width() < 768){
+        addContent();
+      }
+    });
