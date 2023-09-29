@@ -1,0 +1,22 @@
+(function() {
+    function waitForjQuery(trigger, delayInterval, delayTimeout) {
+      var intervalForjQuery = setInterval(function() {
+        if (typeof window.jQuery != 'undefined') {
+          clearInterval(intervalForjQuery);
+          trigger();
+        }
+      }, delayInterval);
+      var timeoutForjQuery = setTimeout(function() {
+        clearInterval(intervalForjQuery);
+      }, delayTimeout);
+    }
+
+    waitForjQuery(function() {
+      var $ = window.jQuery;
+      $(document).ready(function() {
+
+       // here will be the code
+
+      });
+    }, 50, 10000);
+  })();
