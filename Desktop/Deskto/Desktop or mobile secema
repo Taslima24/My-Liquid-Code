@@ -1,0 +1,59 @@
+{%- assign display = section.settings.display -%}
+{%- assign display_class = '' -%}
+{% if display == 'mobile_only' %}
+	{%- assign display_class = 'cf62-mobile' -%}
+{% elsif display == 'desktop_only' %}
+	{%- assign display_class = 'cf62-desktop' -%}
+{% endif %}
+
+@media screen and (min-width: 1000px){
+ html body .cf62-container.cf62-mobile {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1000px){
+  html body .cf62-desktop.cf62-container {
+    display: none;
+  }
+}
+
+ {% schema %}
+  {
+    "name": "Logos Testimonial Images",
+    "settings": [
+      {
+        "type": "select",
+        "id": "display",
+        "label": "Display",
+        "options": [
+          {
+            "value": "both",
+            "label": "Mobile & Desktop"
+          },
+          {
+            "value": "mobile_only",
+            "label": "Mobile Only"
+          },
+          {
+            "value": "desktop_only",
+            "label": "Desktop Only"
+          }
+        ],
+        "default": "both"
+      }
+    ],
+	"blocks": [
+      {
+        "type": "testimonial",
+        "name": "Testimonial",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "cf62_testimonial_img",
+            "label": "Image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
