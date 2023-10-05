@@ -1,0 +1,9 @@
+let checkreviewcount = setInterval(function() {
+
+  if ($('selector').length) {
+
+.............................. here will be code 
+
+    clearInterval(checkreviewcount);
+  }
+}, 100);
