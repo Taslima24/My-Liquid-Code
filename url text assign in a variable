@@ -1,0 +1,13 @@
+// shape value
+    if (window.location.href.indexOf("die-cut") > -1) {
+      var shape = 'Die Cut';
+    } else if (window.location.href.indexOf("circle") > -1) {
+      var shape = 'Circle';
+    } else if (window.location.href.indexOf("oval") > -1) {
+      var shape = 'Oval';
+    } else if (window.location.href.indexOf("square") > -1) {
+      var shape = 'Square';
+    } else if (window.location.href.indexOf("rectangle") > -1) {
+      var shape = 'Rectangle';
+    };
+    $('.sticky-shape-value').text(shape);
