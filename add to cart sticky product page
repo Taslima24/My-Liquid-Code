@@ -1,0 +1,14 @@
+function stickyAddToCart() {
+  var btnOffset = $('.add-to-cart').offset().top + $('.add-to-cart').height();
+  var scrollTop = $(window).scrollTop();
+  if (scrollTop > btnOffset) {
+      console.log("yes");
+    $('body').addClass('bm-show-sticky');
+  } else {
+    $('body').removeClass('bm-show-sticky');
+  }
+}
+
+$(window).scroll(function() {
+  stickyAddToCart();
+});
