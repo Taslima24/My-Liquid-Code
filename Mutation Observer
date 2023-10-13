@@ -1,0 +1,35 @@
+<script>
+    (function () {
+      function init() {
+        var element = document.querySelector('.risk-reversal-seals.hidden').cloneNode(true);
+        var target = document.querySelector('div.order-summary__section--total-lines');
+        target.insertAdjacentElement('afterend', element);
+        element.classList.remove('hidden');
+      }
+      
+      window.addEventListener('DOMContentLoaded', function() {
+          init();
+    
+          var targetNode = document.querySelector('.main__content');
+          var config = {
+            attributes: true,
+            childList: true,
+            subtree: true
+          };
+    
+          var callback = (mutationList, observer) => {
+            for (var mutation of mutationList) {
+              if (mutation.type === 'childList') {
+                var selector = '.order-summary .risk-reversal-seals';
+                if (!document.querySelector(selector)) {
+                  init();
+                }
+              }
+            }
+          };
+    
+          var observer = new MutationObserver(callback);
+          observer.observe(targetNode, config);
+      });
+    })();
+  </script>
