@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "bm-birthday",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
