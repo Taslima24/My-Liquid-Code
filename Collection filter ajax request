@@ -1,0 +1,39 @@
+<script>
+(function() {
+    function waitForjQuery(trigger, delayInterval, delayTimeout) {
+      var intervalForjQuery = setInterval(function() {
+        if (typeof window.jQuery != 'undefined') {
+          clearInterval(intervalForjQuery);
+          trigger();
+        }
+      }, delayInterval);
+      var timeoutForjQuery = setTimeout(function() {
+        clearInterval(intervalForjQuery);
+      }, delayTimeout);
+    }
+
+    waitForjQuery(function() {
+      var $ = window.jQuery;
+      $(document).ready(function () {
+        $("form").on("submit", function(event){
+            event.preventDefault();
+            var formValues= $(this).serialize();
+            const url = `${window.location.pathname}?${formValues}`;
+            fetch(url)
+              .then(response => response.text())
+              .then(text => {
+                var res = new DOMParser().parseFromString(text, 'text/html');
+                var widget = res.querySelector('.bm-collection-item');  
+                $('.bm-collection-main').html(widget);
+                window.history.pushState("data","Title",url);
+                document.title=url;
+                
+              })
+              .catch(e => {
+                  console.error(e);
+              });
+        });
+      });
+    }, 50, 10000);
+  })();  
+</script>
