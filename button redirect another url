@@ -1,0 +1,19 @@
+script>
+let checkContactbtn = setInterval(function() {
+  if ($('.contact-form-right button').length) {
+       $('.contact-form-right button').click(function(){
+           $('input#omnisend-form-6572e4838533e882ef51dc3b-field-container-6572e85269189d0e8bd792e5-custom_message-input"]').val($('.contact-form-right textarea ').html());
+          let checksuccess = setInterval(function() {
+            if (!$('#omnisend-form-6572e4838533e882ef51dc3b-success-sections[style="display: none;"]').length) {
+                 window.location.assign("/pages/thank-you") 
+              clearInterval(checksuccess);
+            }
+          }, 100);
+       });
+       var contacttext = `<textarea id="w3review" name="w3review" rows="4" cols="50" placeholder="Type your message..."></textarea>`
+        $('input#omnisend-form-6572e4838533e882ef51dc3b-field-container-6572e85269189d0e8bd792e5-custom_message-input').after(contacttext);
+            
+    clearInterval(checkContactbtn);
+  }
+}, 100);
+</script> 
