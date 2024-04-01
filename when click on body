@@ -1,0 +1,12 @@
+$(document).click(function (e) {
+        if (!$(e.target).parents().addBack().is('.bm-mobile-atc , .bm-cp-product-form ')) {
+            $('.bm-cp-product-form-wrap').removeClass('bm-cp-mobile-product-form');
+                $('body').removeClass('bm-mobile-atc-open');
+        }
+      });
+
+
+
+      .bm-mobile-atc  = jetai click kore opup open hobe
+
+      .bm-cp-product-form == popup er main div
