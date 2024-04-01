@@ -1,0 +1,15 @@
+$('.site-nav--is-megamenu.site-nav__item span.desctop-menu-arrow').click(function(){
+      
+        if($(this).hasClass('menu-open')){
+          $(this).removeClass('menu-open');
+        } else {
+          $('.site-nav--is-megamenu.site-nav__item span.desctop-menu-arrow').removeClass('menu-open');
+          $(this).addClass('menu-open');
+        };
+      
+        if($(this).parent().find('.site-nav__dropdown').hasClass('menu-open')){
+          $(this).parent().find('.site-nav__dropdown').removeClass('menu-open');
+        } else {
+          $('.site-nav__dropdown').removeClass('menu-open');
+          $(this).parent().find('.site-nav__dropdown').addClass('menu-open');
+        };
