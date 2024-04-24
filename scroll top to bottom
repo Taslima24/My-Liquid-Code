@@ -1,0 +1,7 @@
+$(document).ready(function (){
+  $("#bm-subscription-feature-btn-one").click(function (){
+    $('html, body').animate({
+      scrollTop: $(".bm-about-wrapper").offset().top - $('.site-header').height() - 100
+    }, 2000);
+  });
+});
