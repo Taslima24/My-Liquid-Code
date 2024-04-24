@@ -1,0 +1,171 @@
+<div class="product-highlights">
+  <div class="page-width">
+    <div class="product-highlights-main">
+      <div class="product-highlights-left">
+        <div class="product-highlights-left-img">
+          {% if section.settings.left_img != blank %}
+          <img src="{{ section.settings.left_img | img_url:"master" }}" />
+          {% endif %}
+        </div>
+      </div>
+      <div class="product-highlights-right">
+        <div class="product-highlights-right-top">
+          {% if section.settings.title != blank %}
+          <h2 class="h2">{{ section.settings.title }}</h2>
+          {% endif %}
+          {% if section.settings.description != blank %}
+          <p>{{ section.settings.description }}</p>
+          {% endif %}
+        </div>
+        <div class="product-highlights-right-bottom">
+          {% for block in section.blocks %}
+          <div class="product-highlights-right-block">
+            <div class="product-right-block-img">
+              {% if block.settings.icon_img != blank %}
+              <img src="{{ block.settings.icon_img | img_url:"master"}}"/>
+              {% endif %}
+            </div>
+            {% if block.settings.icon_title != blank %}
+            <h3 class="highlight-title">{{ block.settings.icon_title }}</h3>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.product-highlights {
+    background-image: url(https://cdn.shopify.com/s/files/1/0572/8020/0747/files/Flag_bg.png?v=1713975448), linear-gradient(180deg, #0B0B0B 0%, rgb(11 11 11) 100%);
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.product-highlights-main {
+    display: flex;
+    padding: 50px 0;
+}
+.product-highlights-left {
+    width: 40%;
+    margin-right: 30px;
+}
+.product-highlights-left-img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.product-highlights-right {
+    width: 60%;
+}
+.product-highlights-right-bottom {
+    display: flex;
+    flex-wrap: wrap;
+}
+.product-highlights-right-top h2 {
+    color: #fff;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+}
+.product-highlights-right-top p {
+    color: #fff;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.product-right-block-img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+h3.highlight-title {
+    color: var(--White, #FFF);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-left: 24px;
+}
+.product-highlights-right-block {
+    width: calc(50% - 20px);
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.product-highlights-right-block:nth-child(2n) {
+    margin-right: 0;
+}
+@media only screen and (max-width:749px){
+.product-highlights-main {
+    flex-direction: column;
+}
+.product-highlights-left {
+    width: 100%;
+    margin-right: 0;
+}
+.product-highlights-right {
+    width: 100%;
+    margin-top: 20px;
+}
+.product-highlights-right-bottom {
+    flex-direction: column;
+}
+.product-highlights-right-block {
+    width: 100%;
+    margin-right: 0;
+}
+}
+</style>
+
+
+{% schema %}
+  {
+    "name": "Product Highlights",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "title"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "image_picker",
+        "id": "left_img",
+        "label": "Left Image"
+      }
+    ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_img",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "icon_title",
+          "label": "Icon title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Highlights"
+    }
+  ]
+  }
+{% endschema %}
