@@ -1,0 +1,6 @@
+{% assign discount_content = product.metafields.pdp.discount_content.value %}
+{%- if discount_content != blank and discount_content.enable_discount == true -%}
+  <div class="product__discount_text " style="background:{{ discount_content.background_color }}; color:{{ discount_content.text_color }}; ">
+    <img src="{{ discount_content.image | img_url:"30x" }}"/>{{ discount_content.content | metafield_tag }}
+  </div>
+{%- endif -%}
