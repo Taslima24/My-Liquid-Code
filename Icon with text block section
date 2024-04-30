@@ -1,0 +1,415 @@
+{%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
+
+<div
+  class="text-with-icons hp-abut-us"
+  data-section-id="{{ section_id }}"
+  data-section-type="text-with-icons"
+>
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <div
+        class="
+          text-with-icons__title
+          section-header"
+      >
+        <h2 class="text-{{ section.settings.align_text }}">{{ section.settings.title }}</h2>
+      </div>
+    {%- endif -%}
+    <div
+      class="
+        text-with-icons__blocks
+        has-{{ section.settings.desktop_columns_per_row }}-per-row"
+      data-block-count="{{ section.blocks.size }}"
+      >
+      {% for block in section.blocks %}
+        <div class="text-with-icons__block text-{{ section.settings.align_text }}" {{ block.shopify_attributes }}>
+          <div class="text-with-icons__block-icon">
+            {% case block.settings.icon %}
+              {% when 'bills'%}
+               <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="109" height="109" stroke="#202020" stroke-opacity="0.1"/>
+                <g clip-path="url(#clip0_4111_1463)">
+                <g clip-path="url(#clip1_4111_1463)">
+                <path d="M73.0912 28.9404H65.7929C65.5991 27.2705 64.1762 25.9702 62.455 25.9702H60.394C59.2485 24.1392 57.2348 23 55.0297 23C52.8256 23 50.8115 24.1392 49.6635 25.9702H47.604C45.8828 25.9702 44.4599 27.2705 44.2661 28.9404H36.9741C32.7148 28.9404 29.25 32.4057 29.25 36.6645V79.2763C29.25 83.535 32.7148 86.9999 36.9741 86.9999H73.0912C77.35 86.9999 80.8153 83.535 80.8153 79.2763V36.6645C80.8153 32.4053 77.3505 28.9404 73.0912 28.9404ZM47.9936 29.7202H50.5361C51.4585 29.7202 52.289 29.1724 52.6518 28.3242C53.061 27.3677 53.9946 26.75 55.0297 26.75C56.0644 26.75 56.9965 27.3667 57.4033 28.3208C57.7656 29.1709 58.5966 29.7202 59.5205 29.7202H62.0654V34.8808H47.9936V29.7202ZM77.0653 79.2758C77.0653 81.4672 75.2826 83.2499 73.0912 83.2499H36.9741C34.7827 83.2499 33 81.4672 33 79.2758V36.6645C33 34.4731 34.7827 32.6904 36.9741 32.6904H44.2436V35.271C44.2436 37.1235 45.7509 38.6308 47.604 38.6308H62.455C64.308 38.6308 65.8154 37.1235 65.8154 35.271V32.6904H73.0912C75.2826 32.6904 77.0653 34.4731 77.0653 36.6645V79.2758Z" fill="#202020"/>
+                <path d="M51.1436 49.4628H70.9814C72.017 49.4628 72.8564 48.623 72.8564 47.5878C72.8564 46.5522 72.017 45.7128 70.9814 45.7128H51.1436C50.1079 45.7128 49.2686 46.5522 49.2686 47.5878C49.2686 48.623 50.1079 49.4628 51.1436 49.4628Z" fill="black"/>
+                <path d="M39.3868 51.0971C39.7745 51.4848 40.2838 51.6782 40.7926 51.6782C41.3014 51.6782 41.8107 51.4848 42.1984 51.0971L46.5982 46.6967C47.3307 45.9648 47.3307 44.7773 46.5982 44.0454C45.8663 43.3129 44.6788 43.3129 43.9469 44.0454L40.7926 47.1992L40.2154 46.622C39.483 45.8901 38.296 45.8901 37.5636 46.622C36.8317 47.3544 36.8317 48.5414 37.5636 49.2739L39.3868 51.0971Z" fill="black"/>
+                <path d="M51.1016 62.7782H70.9399C71.9751 62.7782 72.8149 61.9384 72.8149 60.9032C72.8149 59.8676 71.9751 59.0282 70.9399 59.0282H51.1016C50.0664 59.0282 49.2266 59.8676 49.2266 60.9032C49.2266 61.9384 50.0664 62.7782 51.1016 62.7782Z" fill="black"/>
+                <path d="M39.3452 64.4125C39.7207 64.788 40.2197 64.9946 40.751 64.9946H40.7524C41.2837 64.9941 41.7832 64.787 42.1562 64.4125L46.5566 60.0121C47.289 59.2802 47.289 58.0927 46.5566 57.3608C45.8247 56.6284 44.6372 56.6284 43.9053 57.3608L40.751 60.5146L40.1733 59.9374C39.4414 59.2055 38.2544 59.2055 37.522 59.9374C36.7896 60.6699 36.7896 61.8569 37.522 62.5893L39.3452 64.4125Z" fill="black"/>
+                <path d="M71.2177 72.2113H51.3799C50.3442 72.2113 49.5049 73.0507 49.5049 74.0863C49.5049 75.122 50.3442 75.9613 51.3799 75.9613H71.2177C72.2534 75.9613 73.0927 75.122 73.0927 74.0863C73.0927 73.0507 72.2534 72.2113 71.2177 72.2113Z" fill="black"/>
+                <path d="M44.1836 70.5439L41.0293 73.6981L40.4517 73.121C39.7192 72.3886 38.5327 72.3886 37.8003 73.121C37.0679 73.8529 37.0679 75.0404 37.8003 75.7728L39.6235 77.5956C40.0112 77.9833 40.52 78.1771 41.0293 78.1771C41.5381 78.1771 42.0474 77.9833 42.4346 77.5956L46.8349 73.1957C47.5674 72.4633 47.5674 71.2763 46.8349 70.5439C46.103 69.8114 44.9155 69.8114 44.1836 70.5439Z" fill="black"/>
+                </g>
+                </g>
+                <defs>
+                <clipPath id="clip0_4111_1463">
+                <rect width="64" height="64" fill="white" transform="translate(23 23)"/>
+                </clipPath>
+                <clipPath id="clip1_4111_1463">
+                <rect width="64" height="64" fill="white" transform="translate(23 23)"/>
+                </clipPath>
+                </defs>
+                </svg>
+              {% when 'calendar'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-calendar" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M21.3 17.08v10.14M35.52 17.08v10.14M49.74 17.08v10.14M63.97 17.08v10.14M78.19 17.08v10.14M12.63 32.23h74.74M12.63 22.15h74.74v60.77H12.63z"/><path class="a" d="M21.05 38.72h14.47v12.77H21.05zM35.53 38.72H50v12.77H35.53zM50 38.72h14.47v12.77H50zM64.47 38.72h14.47v12.77H64.47z"/><path class="a" d="M21.05 51.48h14.47v12.77H21.05zM35.53 51.48H50v12.77H35.53zM50 51.48h14.47v12.77H50zM64.47 51.48h14.47v12.77H64.47zM21.05 64.25h14.47v12.77H21.05zM35.53 64.25H50v12.77H35.53zM50 64.25h14.47v12.77H50zM64.47 64.25h14.47v12.77H64.47z"/></svg>
+              {% when 'cart'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-cart" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M26.81 71.11h-.05"/><circle class="a" cx="42.66" cy="76.95" r="6.73"/><circle class="a" cx="72.7" cy="76.95" r="6.73"/><path class="a" d="M38.99 59.17L23.7 16.32H11.36"/><path class="a" d="M27.26 26.3h61.38L77 59.17H39a5.53 5.53 0 0 0-5.53 5.53A5.53 5.53 0 0 0 39 70.22h43.87M57.95 59.17V26.3M48.83 59.17L42.61 26.3M67.07 59.17L73.3 26.3M85.08 36.34H30.84M80.68 48.73H35.27"/></svg>
+              {% when 'charity'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-charity" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M63.41 68l21-10.58a4.16 4.16 0 0 1 5.67 2 4.17 4.17 0 0 1-1.93 5.39L54 82a3.35 3.35 0 0 1-2.16.25L39 75.82l-7.31 3.06M22.76 86.67L9.6 55.92l10.24-4.64 13.17 30.75-10.25 4.64z"/><path class="a" d="M23.17 58.17l8.79-4a9.51 9.51 0 0 1 6.88-.37l22.25 7.31A4.52 4.52 0 0 1 63.41 68a4.51 4.51 0 0 1-5 1.77L43.8 65.32M79.37 16.94a12.34 12.34 0 0 0-17.44 0l-.79.79-.78-.79a12.34 12.34 0 1 0-17.44 17.45l.78.78 17.44 17.45 17.45-17.45.78-.78a12.34 12.34 0 0 0 0-17.45z"/></svg>
+              {% when 'chat'%}
+              <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.5" y="0.5" width="109" height="109" stroke="#202020" stroke-opacity="0.1"/>
+              <g clip-path="url(#clip0_4111_1550)">
+              <g clip-path="url(#clip1_4111_1550)">
+              <path d="M87 66.3125C87 56.9839 80.7144 48.8335 71.8506 46.3774C71.2935 33.3926 60.5571 23 47.4375 23C33.9624 23 23 33.9624 23 47.4375C23 51.8291 24.1689 56.105 26.3887 59.8589L23.0898 71.7847L35.0161 68.4863C38.4668 70.5269 42.3594 71.6763 46.377 71.8496C48.8325 80.7139 56.9834 87 66.3125 87C70.0361 87 73.6572 86.0083 76.8389 84.124L86.9097 86.9097L84.124 76.8389C86.0083 73.6572 87 70.0361 87 66.3125ZM35.6079 64.4316L28.4683 66.4067L30.4434 59.2671L29.9932 58.563C27.8716 55.2437 26.75 51.3965 26.75 47.4375C26.75 36.0303 36.0303 26.75 47.4375 26.75C58.8447 26.75 68.125 36.0303 68.125 47.4375C68.125 58.8447 58.8447 68.125 47.4375 68.125C43.4785 68.125 39.6318 67.0034 36.312 64.8818L35.6079 64.4316ZM81.5317 81.5317L76.2339 80.0659L75.5264 80.5264C72.7837 82.3081 69.5972 83.25 66.3125 83.25C58.9805 83.25 52.5376 78.5093 50.2549 71.7114C61.4824 70.417 70.417 61.4824 71.7119 50.2544C78.5093 52.5376 83.25 58.9805 83.25 66.3125C83.25 69.5972 82.3081 72.7837 80.5264 75.5264L80.0659 76.2339L81.5317 81.5317Z" fill="#202020"/>
+              <path d="M45.5625 56.875H49.3125V60.625H45.5625V56.875Z" fill="black"/>
+              <path d="M51.1875 41.75C51.1875 42.8149 50.7539 43.7979 49.9668 44.5181L45.5625 48.5493V53.125H49.3125V50.2007L52.4985 47.2847C54.0483 45.8662 54.9375 43.8491 54.9375 41.75C54.9375 37.6143 51.5732 34.25 47.4375 34.25C43.3018 34.25 39.9375 37.6143 39.9375 41.75H43.6875C43.6875 39.6821 45.3696 38 47.4375 38C49.5054 38 51.1875 39.6821 51.1875 41.75Z" fill="black"/>
+              </g>
+              </g>
+              <defs>
+              <clipPath id="clip0_4111_1550">
+              <rect width="64" height="64" fill="white" transform="translate(23 23)"/>
+              </clipPath>
+              <clipPath id="clip1_4111_1550">
+              <rect width="64" height="64" fill="white" transform="translate(23 23)"/>
+              </clipPath>
+              </defs>
+              </svg>
+              {% when 'envelope'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-open-envelope" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M78.33 51.24V13H21.59v38.22M31.93 24.59h36.26M31.93 34.4h36.26M31.93 44.2h36.26"/><path class="a" d="M78.41 39.02l8.93 6.88v41.06H12.66V45.9l8.93-6.88"/><path class="a" d="M87.26 45.9l-37.3 22.79-37.3-22.79M12.66 86.96l29.82-22.84M87.34 86.96L57.52 64.12"/></svg>
+              {% when 'gears'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-gears" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M51.11 53a18.75 18.75 0 0 0 .67-3.35l6.37-1.51L55.27 36l-6.37 1.56a18.51 18.51 0 0 0-4.68-5l1.87-6.28-11.9-3.55L32.32 29a18.68 18.68 0 0 0-6.62 1.59l-4.5-4.76-9 8.53 4.5 4.76a18.36 18.36 0 0 0-2 6.52l-6.35 1.57 2.88 12.08 6.37-1.51a18.62 18.62 0 0 0 4.67 4.95L20.4 69l11.91 3.55 1.87-6.27a18.67 18.67 0 0 0 6.62-1.58l4.5 4.76 9-8.53-4.5-4.76A19.38 19.38 0 0 0 51.11 53z"/><circle class="a" cx="33.25" cy="47.67" r="9.13"/><path class="a" d="M84.49 35.6a11.31 11.31 0 0 0 .88-1.91h4v-7.63h-4a11.44 11.44 0 0 0-2.09-3.62l2-3.48-6.61-3.81-2 3.48a11.3 11.3 0 0 0-4.18 0l-2-3.48L63.86 19l2 3.49a11.22 11.22 0 0 0-1.22 1.71 12.09 12.09 0 0 0-.87 1.91h-4v7.63h4a11.63 11.63 0 0 0 2.09 3.62l-2 3.48 6.61 3.81 2-3.48a11.3 11.3 0 0 0 4.18 0l2 3.48 6.6-3.81-2-3.49a11.17 11.17 0 0 0 1.24-1.75z"/><circle class="a" cx="74.58" cy="29.89" r="5.61"/><path class="a" d="M86.57 70.8a13.56 13.56 0 0 0 .49-2.41l4.59-1.08-2.05-8.7-4.6 1.08a13.3 13.3 0 0 0-3.36-3.58L83 51.6 74.45 49l-1.36 4.51a13.38 13.38 0 0 0-4.77 1.13l-3.23-3.44-6.52 6.13 3.23 3.43a13.19 13.19 0 0 0-.92 2.29 13.56 13.56 0 0 0-.49 2.41l-4.59 1.1 2.05 8.7 4.59-1.08a13.42 13.42 0 0 0 3.35 3.58l-1.35 4.51L73 84.85l1.36-4.51a13.38 13.38 0 0 0 4.77-1.13l3.23 3.44 6.52-6.13-3.23-3.44a12.78 12.78 0 0 0 .92-2.28z"/><circle class="a" cx="73.72" cy="66.93" r="6.58"/></svg>
+              {% when 'gift'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-gift" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M13.35 30.07h73.29v15.11H13.35zM17.88 45.18h64.23V87.5H17.88zM50 30.07V87.5M29.63 15.42a6.59 6.59 0 0 0-.81 4.33 7.75 7.75 0 0 0 1.39 3.94c2.48 2.65 8 5.94 19.88 6.38a21 21 0 0 0-4.26-12.2A13.13 13.13 0 0 0 36 12.51c-2.37-.09-4.89.49-6.37 2.91z"/><path class="a" d="M69.9 14.75a6.55 6.55 0 0 1 1.29 5 8 8 0 0 1-1.39 4c-2.49 2.65-8 5.94-19.89 6.38a20.93 20.93 0 0 1 4.22-12.14A13.12 13.12 0 0 1 64 12.51a6.94 6.94 0 0 1 5.9 2.24z"/></svg>
+              {% when 'globe'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-globe" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M82.19 69.25a13.09 13.09 0 0 1-3.54-3 1.86 1.86 0 0 1 0-2.38c1.29-1.52 3.08-5-4.17-7.52a5.28 5.28 0 0 0-2.24 0 12.36 12.36 0 0 1-5.49 0 9.78 9.78 0 0 1-4.1-2.16c-.23-.2-.44-.41-.65-.63a10.08 10.08 0 0 1-2.17-10l.15-.46a8.09 8.09 0 0 0-3.92-9.55l-1.83-1c-3.54-1.58-5.69-3.88-6.39-6.83-1-4-.14-7.55 4.46-13.15M32 17.1a13 13 0 0 1 3.52 7.23 9.74 9.74 0 0 1-.52 4.76 11.74 11.74 0 0 1-2.16 3.61 10.49 10.49 0 0 0-1.72 2.73c-.62 1.51-1.12 3.44-.61 4.91a4 4 0 0 0 2.75 2.33c.25.08.52.16.8.23a5.11 5.11 0 0 1 4.24 4.65c.13 2-.82 4.29-2.68 6.44a17.84 17.84 0 0 1-6.76 4.78A15.87 15.87 0 0 1 23 59.93a14.39 14.39 0 0 1-3.14-.35c-3.45-.77-3.73-1.39-6.86-3.58M32.12 83c-.18-2.75-2.68-8.09.69-13.4a22.33 22.33 0 0 1 8.36-7.36c3.48-1.79 6.77-2.37 9-1.58a4.61 4.61 0 0 1 3.08 5.12v.83a4 4 0 0 0 1.21 3.3c1.49 1.26 4.42 1.3 6.66.91a2.55 2.55 0 0 0 .59-.18A12.09 12.09 0 0 1 67 69.43a9.74 9.74 0 0 1 4.51 1.2 12.61 12.61 0 0 1 5.41 5.51"/><circle class="a" cx="50" cy="50" r="37.5"/></svg>
+              {% when 'package'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-package" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2.16px}</style></defs><path class="a" d="M50 89.87L15.33 69.86V30.08l34.78-19.95 34.56 19.95v39.78L50 89.87z"/><path class="a" d="M67.33 50.78V40.09L32.76 20.14M15.33 30.08L50 50.09"/><path class="a" d="M50 89.87V50.09l34.67-20.01"/></svg>
+              {% when 'phone'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-phone" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M80.63 63.49L67.77 59.9a6.69 6.69 0 0 0-.75-.16h-.33a5.65 5.65 0 0 0-4.43 1.5l-3.95 3.66-.2.2c-.31.32-1.89 1.75-4.34.05l-.22-.15a73.21 73.21 0 0 1-19.1-19.2s-1.35-2 .17-3.56l4.24-4.48.17-.17c.3-.29 1.69-1.87.92-5.22l-3.37-12.71a5.77 5.77 0 0 0-1-2.1 5.31 5.31 0 0 0-3.16-1.95h-.25a22.6 22.6 0 0 0-6.35-.5 5.69 5.69 0 0 0-1.8.55 16.31 16.31 0 0 0-9 14.7 44 44 0 0 0 2 12 54.47 54.47 0 0 0 9.2 16.66s9.33 12.22 21.66 19.57a63.37 63.37 0 0 0 14.8 5.93s7 1.65 12.59-.54c0 0 7-2.43 9.5-8.56a5.37 5.37 0 0 0 .39-1.85 21.32 21.32 0 0 0-.77-5.8s-1.04-3.55-3.76-4.28z"/></svg>
+              {% when 'plant'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-plant" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M15.33 86.58h69.34s-30.67-40.37-69.34 0zM43.15 46.69s9 8.83 9.27 22M82.06 13.43s-27.38-1.32-25.37 25.16c0 0 23 5.54 25.37-25.16zM82.06 13.43L56.69 38.59M63.19 32.17l13.16-.45M70.05 25.35l9.7-.34M63.19 32.17l.45-13.07M70.05 25.35l.34-9.91M50.64 59.11a32.68 32.68 0 0 1 6-20.52M18 21.31S16.67 48.7 43.15 46.69c0 0 5.54-23-25.15-25.38zM17.99 21.31l25.16 25.38M36.73 40.19l-.45-13.16M29.91 33.33l-.34-9.7M36.73 40.19l-13.08-.45M29.91 33.33L20 32.99"/></svg>
+              {% when 'recycle'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-recycle" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M24 63.72h17.6v17.64h-6a12.87 12.87 0 0 1-11.57-7.24"/><path class="a" d="M24 63.72v.07a9.82 9.82 0 0 0-1.2 4.71 12.73 12.73 0 0 0 1.27 5.58l-10.21-20-.62-1.22a9.59 9.59 0 0 1-.58-2 9.27 9.27 0 0 1 1-6.12l2.51-4.58-3.36-1.81 8.07-1.55 8.07-1.54 3.12 7.59 3.13 7.6-3-1.62zM49 19.28l-8 15.66-15.72-8 2.7-5.3a12.87 12.87 0 0 1 11.7-7h.05"/><path class="a" d="M49 19.28v-.07A9.78 9.78 0 0 0 45.32 16a12.78 12.78 0 0 0-5.55-1.4h23.82a9.77 9.77 0 0 1 2 .38 9.24 9.24 0 0 1 5 3.66l2.94 4.31 3.14-2.17-2.27 7.87-2.29 7.9-8.18-.67-8.19-.66 2.8-1.94zM76 63.5L67.6 48l15.53-8.38L86 44.89a12.86 12.86 0 0 1-.87 13.62"/><path class="a" d="M76 63.5a9.82 9.82 0 0 0 4.71-1.18 12.78 12.78 0 0 0 4.3-3.77L72.31 77l-.78 1.12a9 9 0 0 1-1.45 1.44 9.27 9.27 0 0 1-5.85 2L59 81.6v3.82l-5.2-6.36-5.2-6.37 5.21-6.35L59 60v3.41z"/></svg>
+              {% when 'ribbon'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-ribbon" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M44.18 67.51L30 89.72l-4.44-12.19-12.93 1.1 14.19-22.18a28.86 28.86 0 0 0 13.79 10.08 26.93 26.93 0 0 0 3 .85zM87.37 78.63l-12.93-1.1L70 89.72 55.81 67.51l.63-.13a26.76 26.76 0 0 0 2.94-.85 28.8 28.8 0 0 0 13.8-10.08z"/><path class="a" d="M78.92 39.19a28.82 28.82 0 0 1-3.61 14 30 30 0 0 1-1.74 2.73 5 5 0 0 1-.39.52 28.8 28.8 0 0 1-13.79 10.09 26.76 26.76 0 0 1-2.94.85l-.63.13a29 29 0 0 1-11.63 0l-.62-.13a26.93 26.93 0 0 1-3-.85 28.86 28.86 0 0 1-13.75-10.08c-.13-.17-.26-.34-.38-.52q-.93-1.32-1.74-2.73a28.92 28.92 0 1 1 54.22-14z"/><path class="a" d="M56.95 42.84l1.63 9.55L50 47.88l-8.58 4.51 1.64-9.55-6.95-6.77 9.6-1.39 4.29-8.7 4.29 8.7 9.6 1.39-6.94 6.77z"/></svg>
+              {% when 'sales-tag'%}
+               <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="109" height="109" stroke="#202020" stroke-opacity="0.1"/>
+                <g clip-path="url(#clip0_4111_1889)">
+                <path d="M50.7501 84.9688C50.7486 84.9688 50.7468 84.9688 50.7449 84.9688C48.8674 84.9673 47.1019 84.2349 45.7747 82.9055L27.0818 64.1859C24.3477 61.4467 24.3477 56.9895 27.0818 54.2506L52.2801 29.004C54.8769 26.4021 58.3321 24.9688 62.0089 24.9688H77.9958C81.8725 24.9688 85.027 28.1226 85.027 32V47.9379C85.027 51.6121 83.5952 55.0658 80.9958 57.6622L55.7192 82.9125C54.3913 84.2385 52.6265 84.9688 50.7501 84.9688ZM62.0089 29.6562C59.586 29.6562 57.3093 30.6007 55.598 32.3153L30.3994 57.5619C29.4879 58.4752 29.4879 59.9606 30.3994 60.8739L49.0922 79.5935C49.5342 80.0363 50.1224 80.2809 50.7486 80.2812H50.7504C51.3759 80.2812 51.9641 80.0377 52.4064 79.5961L77.683 54.3462C79.3962 52.6353 80.3395 50.3589 80.3395 47.9379V32C80.3395 30.7076 79.2882 29.6562 77.9958 29.6562H62.0089ZM68.0345 48.7578C64.1574 48.7578 61.0032 45.604 61.0032 41.7266C61.0032 37.8491 64.1574 34.6953 68.0345 34.6953C71.9116 34.6953 75.0657 37.8491 75.0657 41.7266C75.0657 45.604 71.9116 48.7578 68.0345 48.7578ZM68.0345 39.3828C66.7421 39.3828 65.6907 40.4342 65.6907 41.7266C65.6907 43.0189 66.7421 44.0703 68.0345 44.0703C69.3272 44.0703 70.3782 43.0189 70.3782 41.7266C70.3782 40.4342 69.3272 39.3828 68.0345 39.3828Z" fill="#202020"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_4111_1889">
+                <rect width="64" height="64" fill="white" transform="translate(23 23)"/>
+                </clipPath>
+                </defs>
+                </svg>
+
+              {% when 'shield'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-shield" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M51.18 7.63c5.54 3.1 17.09 8.07 34.33 8.07h1.07v23.72A56.14 56.14 0 0 1 80 66.07C73.58 78 63.89 85.62 51.18 88.83 38.48 85.62 28.79 78 22.36 66.06a56.08 56.08 0 0 1-6.58-26.64V15.7h1.07c17.25 0 28.8-4.97 34.33-8.07z"/><path class="a" d="M66.15 37.87L45.43 58.59l-9.21-9.21"/></svg>
+              {% when 'stopwatch'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-stopwatch" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><circle class="a" cx="60.82" cy="54.12" r="4.26"/><path class="a" d="M46.92 78.41a28 28 0 1 0-14.08-24.28M32.84 54.13a28 28 0 1 1 14.08 24.28M34.14 69.37H11.19M38.7 62.65H23.4M38.7 76.09H23.4M32.84 54.13a28 28 0 1 1 14.08 24.28M60.82 16.94v14.24M42.84 32.69l3.08 3.99M33.27 49.27l4.96.87M51.25 80.42l1.72-4.73M70.39 80.42l-1.72-4.73M85.06 68.12L80.7 65.6M88.38 49.27l-4.88 1.31M78.81 32.69l-3.08 4.03M60.82 49.87V39.6M54.4 16.94h12.84"/></svg>
+              {% when 'store'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-store" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M83 50.49a6.61 6.61 0 0 1-6.61-6.61 6.61 6.61 0 1 1-13.21 0 6.61 6.61 0 1 1-13.22 0 6.61 6.61 0 1 1-13.21 0 6.61 6.61 0 1 1-13.22 0A6.61 6.61 0 0 1 17 50.49a7.23 7.23 0 0 1-1.4-.15v34.81h6.55V57.57H40v27.58h44.43V50.34a7 7 0 0 1-1.43.15zm-4.31 25.08H46.56v-18h32.13z"/><path class="a" d="M22.11 57.57h17.9v27.58h-17.9zM46.56 57.57H78.7v18H46.56z"/><path class="a" d="M22.11 57.57h17.9v27.58h-17.9zM46.56 57.57H78.7v18H46.56zM27 14.84l-3.43 19.37v9.67A6.61 6.61 0 0 1 17 50.49a7.23 7.23 0 0 1-1.4-.15 6.62 6.62 0 0 1-5.21-6.46v-9.67l5.21-19.37z"/><path class="a" d="M36.78 34.21v9.67a6.61 6.61 0 1 1-13.22 0v-9.67L27 14.84h11.52z"/><path class="a" d="M50 14.84v29a6.61 6.61 0 1 1-13.21 0v-9.63l1.74-19.37z"/><path class="a" d="M63.22 34.21v9.67a6.61 6.61 0 1 1-13.22 0v-29h11.48z"/><path class="a" d="M76.43 34.21v9.67a6.61 6.61 0 1 1-13.21 0v-9.67l-1.74-19.37H73z"/><path class="a" d="M89.65 34.21v9.67a6.62 6.62 0 0 1-5.22 6.46 7 7 0 0 1-1.39.15 6.61 6.61 0 0 1-6.61-6.61v-9.67L73 14.84h11.44z"/><circle class="a" cx="34.86" cy="74.25" r="1.52"/></svg>
+              {% when 'thumbs-up'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-thumbs-up" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M16.01 54.13h20.02v35.22H16.01z"/><path class="a" d="M36 82.72l3.84 2.63a11.53 11.53 0 0 0 6.54 2h13.91M36 58.78l2.07-1.93A10.23 10.23 0 0 0 40.26 54l7.66-15a7.4 7.4 0 0 0 .81-3.36v-8.3a2.93 2.93 0 0 1 2.92-2.94c2.41 0 5.78 1 7.92 6.18a18.63 18.63 0 0 1 1 10.5l-1.29 6.94h19A4.91 4.91 0 0 1 83.16 53a4.91 4.91 0 0 1-4.91 4.92H59.6M62.68 67.72H76a4.91 4.91 0 0 1 4.91 4.92A4.91 4.91 0 0 1 76 77.55H65.65"/><path class="a" d="M65.65 77.55h6.12a4.92 4.92 0 0 1 4.92 4.92 4.93 4.93 0 0 1-4.92 4.92h-12.5M59.6 57.89h19.47A4.92 4.92 0 0 1 84 62.81a4.91 4.91 0 0 1-4.92 4.91h-16.4M53.19 20.06v-9.41M47.33 22.12l-6.05-7.22M44.15 27.46l-9.27-1.64M62.04 27.68l9.27-1.64M59 22.26l6.05-7.21"/></svg>
+              {% when 'trophy'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-trophy" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M33.62 87.94h32.76M71.17 50.08a8.85 8.85 0 0 0 3.21-.93c4.16-2.09 7.12-7.42 7.12-13.65V18.63H73M28.83 50.08a8.85 8.85 0 0 1-3.21-.93c-4.16-2.09-7.12-7.42-7.12-13.65V18.63H27M55.94 38.9l1.4 8.17L50 43.21l-7.34 3.86 1.4-8.17-5.94-5.79 8.21-1.19L50 24.48l3.67 7.44 8.21 1.19-5.94 5.79z"/><path class="a" d="M27 12.06V40a27.76 27.76 0 0 0 .45 5 4.1 4.1 0 0 0 .11.61 27 27 0 0 0 1.26 4.44c3.18 8.38 10.12 14.49 18.43 15.6a19.25 19.25 0 0 0 2.75.19 18.87 18.87 0 0 0 2.73-.19 22 22 0 0 0 13.52-7.38 26.16 26.16 0 0 0 4.91-8.19 27 27 0 0 0 1.26-4.44 4.1 4.1 0 0 0 .11-.61A27.76 27.76 0 0 0 73 40V12.06zM49.97 65.84v22.1"/></svg>
+              {% when 'truck'%}
+              <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.5" y="0.5" width="109" height="109" stroke="#202020" stroke-opacity="0.1"/>
+              <g clip-path="url(#clip0_4111_1476)">
+              <path d="M86.4723 54.9722L75.7161 43.8586C75.363 43.4936 74.8767 43.2876 74.3689 43.2876H67.4955V35.1981C67.4955 34.1626 66.656 33.3231 65.6205 33.3231H30.7949C29.7594 33.3231 28.9199 34.1626 28.9199 35.1981V40.8249H27.5006C26.4651 40.8249 25.6256 41.6644 25.6256 42.6999C25.6256 43.7354 26.4651 44.5749 27.5006 44.5749H28.9199V48.3266H24.875C23.8395 48.3266 23 49.1661 23 50.2016C23 51.2371 23.8395 52.0766 24.875 52.0766H28.9199V69.2962C28.9199 70.3317 29.7594 71.1712 30.7949 71.1712H34.786C35.1495 72.3812 35.8086 73.49 36.7271 74.4085C38.1899 75.8714 40.1348 76.6769 42.2034 76.6769C44.272 76.6769 46.2167 75.8714 47.6796 74.4085C48.6091 73.479 49.2514 72.3697 49.6086 71.1919H67.5143C67.8715 72.3697 68.5137 73.479 69.4432 74.4085C70.906 75.8714 72.8509 76.6769 74.9195 76.6769C76.9881 76.6769 78.9329 75.8714 80.3957 74.4085C81.3252 73.479 81.9675 72.3697 82.3247 71.1919H85.125C86.1605 71.1919 87 70.3524 87 69.3169V56.2762C87 55.7895 86.8108 55.322 86.4723 54.9722ZM80.701 54.4012H67.4429V47.0376H73.5742L80.701 54.4012ZM32.6699 52.0765H42.429C43.4645 52.0765 44.304 51.237 44.304 50.2015C44.304 49.166 43.4645 48.3265 42.429 48.3265H32.6699V44.5747H43.8044C44.8399 44.5747 45.6794 43.7352 45.6794 42.6997C45.6794 41.6642 44.8399 40.8247 43.8044 40.8247H32.6699V37.073H43.8044H63.7454L63.6927 67.4416H49.8005C49.5161 65.9801 48.8092 64.5852 47.6796 63.4555C46.2169 61.9926 44.272 61.1871 42.2034 61.1871C40.1348 61.1871 38.19 61.9926 36.7271 63.4555C35.6271 64.5555 34.899 65.9281 34.6054 67.421H32.6699V52.0765ZM45.028 71.7569C44.2735 72.5114 43.2703 72.9269 42.2034 72.9269C41.1365 72.9269 40.1332 72.5114 39.3787 71.7569C38.6242 71.0024 38.2087 69.9991 38.2087 68.9321C38.2087 67.865 38.6242 66.8617 39.3787 66.1072C40.1332 65.3527 41.1365 64.9372 42.2034 64.9372C43.2703 64.9372 44.2735 65.3527 45.028 66.1072C46.5855 67.6649 46.5855 70.1992 45.028 71.7569ZM77.7439 71.7569C76.9894 72.5114 75.9861 72.9269 74.9193 72.9269C73.8524 72.9269 72.8491 72.5114 72.0946 71.7569C70.5371 70.1992 70.5371 67.665 72.0946 66.1074C72.8491 65.3529 73.8524 64.9374 74.9193 64.9374C75.9861 64.9374 76.9894 65.3529 77.7439 66.1074C78.4984 66.8619 78.9137 67.8651 78.9137 68.9322C78.9139 69.9991 78.4984 71.0024 77.7439 71.7569ZM82.5165 67.4417C82.2321 65.9802 81.5252 64.5854 80.3955 63.4556C78.9328 61.9927 76.9879 61.1872 74.9193 61.1872C72.8506 61.1872 70.9059 61.9927 69.443 63.4556C68.447 64.4517 67.7816 65.6542 67.4427 66.9265V58.1512H83.25V67.4417H82.5165Z" fill="#202020"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_4111_1476">
+              <rect width="64" height="64" fill="white" transform="translate(23 23)"/>
+              </clipPath>
+              </defs>
+              </svg>
+              {% when 'wallet'%}
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-wallet" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M69.36 55.8a2.45 2.45 0 1 1-2.45 2.45 2.45 2.45 0 0 1 2.45-2.45z"/><path class="a" d="M61.77 58.24a7.92 7.92 0 0 0 7.94 7.94H85V85H18.49a6 6 0 0 1-6-6V28a4.64 4.64 0 0 0 4.67 4.66H85v17.65H69.71a7.93 7.93 0 0 0-7.94 7.93z"/><path class="a" d="M86 50.31H69.71a7.94 7.94 0 1 0 0 15.87H86a1.53 1.53 0 0 0 1.53-1.52V51.84A1.54 1.54 0 0 0 86 50.31zM12.5 28a4.66 4.66 0 0 1 4.67-4.66H47M68.65 23.32h10.82v9.33"/><path class="a" d="M72.99 32.65H27l20.01-9.33 17.78-8.28 3.86 8.28 4.34 9.33z"/></svg>
+            {% endcase %}
+          </div>
+          <div class="text-with-icons__block-title">
+            <h3>{{ block.settings.title }}</h3>
+          </div>
+          <div class="text-with-icons__block-text">
+            {{ block.settings.text }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {%- if section.settings.button_label != blank -%}
+      <div class="text-with-icons__button">
+        <a href="{{ section.settings.button_link }}" class="btn btn--secondary">
+          {{ section.settings.button_label }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{%- if section.settings.divider -%}</div>{%- endif -%}
+
+{% style %}
+  #shopify-section-{{ section_id }} .icon {
+    color: {{ section.settings.icon_color }};
+  }
+
+  #shopify-section-{{ section_id }} .icon path,
+  #shopify-section-{{ section_id }} .icon polygon,
+  #shopify-section-{{ section_id }} .icon rect,
+  #shopify-section-{{ section_id }} .icon circle,
+  #shopify-section-{{ section_id }} .icon ellipse,
+  #shopify-section-{{ section_id }} .icon line,
+  #shopify-section-{{ section_id }} .icon polyline,
+  #shopify-section-{{ section_id }} .icon g {
+    stroke-width: {{ settings.icon_weight | replace: 'px', '' | minus: 1 }}px;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "About Us",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "align_text",
+      "label": "Text alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "desktop_columns_per_row",
+      "label": "Desktop columns per row",
+      "default": 3,
+      "min": 2,
+      "max": 4,
+      "step": 1
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#000"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "divider",
+      "label": "Show section divider",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_block",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "chat",
+          "options": [
+            {
+              "value": "bills",
+              "label": "Bills"
+            },
+            {
+              "value": "calendar",
+              "label": "Calendar"
+            },
+            {
+              "value": "cart",
+              "label": "Cart"
+            },
+            {
+              "value": "charity",
+              "label": "Charity"
+            },
+            {
+              "value": "chat",
+              "label": "Chat"
+            },
+            {
+              "value": "envelope",
+              "label": "Envelope"
+            },
+            {
+              "value": "gears",
+              "label": "Gears"
+            },
+            {
+              "value": "gift",
+              "label": "Gift"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "package",
+              "label": "Package"
+            },
+            {
+              "value": "phone",
+              "label": "Phone"
+            },
+            {
+              "value": "plant",
+              "label": "Plant"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle"
+            },
+            {
+              "value": "ribbon",
+              "label": "Ribbon"
+            },
+            {
+              "value": "sales-tag",
+              "label": "Sales tag"
+            },
+            {
+              "value": "shield",
+              "label": "Shield"
+            },
+            {
+              "value": "stopwatch",
+              "label": "Stopwatch"
+            },
+            {
+              "value": "store",
+              "label": "Store"
+            },
+            {
+              "value": "thumbs-up",
+              "label": "Thumbs up"
+            },
+            {
+              "value": "trophy",
+              "label": "Trophy"
+            },
+            {
+              "value": "truck",
+              "label": "Truck"
+            },
+            {
+              "value": "wallet",
+              "label": "Wallet"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Example title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Use this section to explain a set of product features, to link to a series of pages, or to answer common questions about your products.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Us",
+      "blocks": [
+        {
+          "type": "text_block"
+        },
+        {
+          "type": "text_block"
+        },
+        {
+          "type": "text_block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+ /*styling start for Hp about us */
+
+.hp-abut-us h2.text-center {
+    font-size: 52px;
+    line-height: 64.48px;
+    font-weight: 300;
+    font-family: "IvyPresto Display";
+    font-family: Kenjo I;
+    margin-bottom: 50px;
+    letter-spacing: 0.52px;
+}
+.hp-abut-us .text-with-icons__block-title h3 {
+    font-size: 24px;
+    line-height: 27.84px;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    margin-bottom: 8px;
+}
+.hp-abut-us .text-with-icons__block-text p {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    font-family: "Inter", sans-serif;
+    max-width: 238px;
+    margin: 0 auto;
+}
+.template-index .text-with-icons__blocks {
+    max-width: 1174px;
+    margin: 0 auto;
+}
+@media only screen and (max-width:767px){
+  .hp-abut-us h2.text-center {
+    font-size: 28px;
+    line-height: 30.8px;
+    margin-bottom: 30px;
+  }
+  .hp-abut-us .text-with-icons__block-title h3 {
+    font-size: 22px;
+    line-height: 25.52px;
+    margin-bottom: 5px;
+  }
+   .text-with-icons__block.text-center {
+    padding: 0 0 30px;
+  }
+  .hp-abut-us .text-with-icons__block-text p {
+    font-size: 14px;
+    line-height: 21px;
+    max-width: 100%;
+ }
+}
+</style>
