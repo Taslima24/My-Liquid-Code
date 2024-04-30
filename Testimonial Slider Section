@@ -1,0 +1,237 @@
+<div class="bm-doctor-information">
+  <div class="page-width">
+    <div class="bm-doctor-information-main">
+      <div id="doctors-carousel-new-slider">
+        {% for block in section.blocks %}
+        <div class="bm-doctor-info-block">
+          <div class="bm-doctor-info">
+            {%- if block.settings.title != blank -%}
+            <h2 class="bm-doctor-info-title">{{ block.settings.title }}</h2>
+            {%- endif -%}
+            {%- if block.settings.subtitle != blank -%}
+            <h3>{{ block.settings.subtitle }}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+            <span>{{ block.settings.text }}</span>
+            {%- endif -%}
+            {%- if block.settings.Information != blank -%}
+            <p>{{ block.settings.Information }}</p>
+            {%- endif -%}
+          </div>
+          <div class="bm-doctor-img">
+            <div class="" id="doctors-carousel-new">
+              <div class=" bm-doctor-img-slider">
+                {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | img_url:"master"}}" alt="{{ block.settings.image.alt }}"/>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div id="doctors-carousel-new-slider-thumbs">
+        <div class="" id="doctors-carousel-new-thumbs">
+          {% for block in section.blocks %}
+          <div class=" bm-doctor-img-slider">
+            {%- if block.settings.image != blank -%}
+            <img src="{{ block.settings.image | img_url:"master"}}" alt="{{ block.settings.image.alt }}"/>
+            {%- endif -%}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {
+  $('#doctors-carousel-new-slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    asNavFor: '#doctors-carousel-new-thumbs'
+  });
+  $('#doctors-carousel-new-thumbs').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    asNavFor: '#doctors-carousel-new-slider',
+    dots: true,
+    arrows: false,
+    centerMode: false,
+    focusOnSelect: true
+  });
+  
+});
+</script>
+
+{% schema %}
+{
+  "name": "Doctor Information",
+  "settings": [
+      
+  ],
+  "blocks": [
+      {
+        "name": "Image",
+        "type": "slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subitle"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "text"
+          },
+          {
+            "type": "textarea",
+            "id": "Information",
+            "label": "Information"
+          }
+        ]
+      }
+  ],
+  "presets": [
+    {
+      "name": "Doctor Information",
+      "blocks": []
+    }
+
+  ]
+}
+{% endschema %}
+
+
+<style>
+/*styling start for bm-doctor-information */
+.bm-doctor-information {
+    background: #F7F7F7;
+    padding: 55px 0;
+}
+.bm-doctor-info-block {
+    display: flex !important;
+    align-items: center;
+}
+div#doctors-carousel-new-thumbs {
+    max-width: 50%;
+    margin-left: auto;
+}
+.bm-doctor-info {
+    width: 50%;
+    padding-right: 30px;
+}
+.bm-doctor-img {
+    width: 50%;
+}
+.bm-doctor-img .owl-carousel {
+    display: block;
+}
+.bm-doctor-img-slider img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+h2.bm-doctor-info-title {
+    font-family: Poppins;
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: left;
+    margin: 0;
+    color: #3C3D42;
+}
+.bm-doctor-info h3 {
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: left;
+    margin: 0;
+    margin-top: 5px;
+    color: #3C3D42;
+}
+.bm-doctor-info span {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px;
+    text-align: left;
+}
+.bm-doctor-info p {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23px;
+    text-align: left;
+    margin-top: 25px;
+    margin-bottom: 0;
+}
+div#doctors-carousel-new-thumbs {
+    margin-top: 20px;
+}
+div#doctors-carousel-new-thumbs .bm-doctor-img-slider {
+    padding-right: 10px;
+}
+div#doctors-carousel-new-thumbs .slick-dots li button:before {
+    opacity: unset;
+    font-size: 14px;
+    color: #fff;
+}
+div#doctors-carousel-new-thumbs .slick-dots {
+    text-align: left;
+    bottom: -34px;
+}
+div#doctors-carousel-new-thumbs .slick-dots li.slick-active button:before {
+    opacity: unset;
+    color: #D9D9D9 !important;
+}
+/* div#doctors-carousel-new-thumbs .bm-doctor-img-slider:last-child {
+    padding-right: 0;
+} */
+@media only screen and (max-width:767px){
+  .bm-doctor-information-main {
+    flex-direction: column;
+  }
+  .bm-doctor-info-block {
+    flex-direction: column;
+  }
+  div#doctors-carousel-new-thumbs {
+    max-width: 100%;
+  }
+  .bm-doctor-info {
+      width: 100%;
+      padding-right: 0;
+      margin-bottom: 20px;
+  }
+  .bm-doctor-img {
+      width: 100%;
+  }
+  div#doctors-carousel-new-thumbs .slick-dots li button:before {
+    opacity: unset;
+    font-size: 10px;
+    color: #C4C4C4;
+ }
+  div#doctors-carousel-new-thumbs .slick-dots li.slick-active button:before {
+    opacity: unset;
+    color: #636363 !important;
+  }
+  
+}
+/*styling end for bm-doctor-information */
+</style>
