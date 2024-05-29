@@ -1,0 +1,219 @@
+Section Image :  https://tinyurl.com/298vr4mj
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="best-box-product section-{{ section.id }}-padding">
+  <div class="container">
+    <div class="best-box-product-main">
+      <div class="best-box-product-left">
+
+        {% if section.settings.title != blank %}
+          <h2>{{ section.settings.title }}</h2>
+        {% endif %}
+        
+        {% if section.settings.description != blank %}
+          <p>{{ section.settings.description }}</p>
+        {% endif %}
+      </div>
+      <div class="best-box-product-right">
+        <div class="main-carousel-wrap best-box-slider">
+         <div class="best-box-slider-wrapper">
+           {% for block in section.blocks %}
+            {% assign product = all_products[block.settings.product] %}
+             <div class="carousel-cell best-box-slider-block">
+               <div class="best-box-slide-content">
+                 <a href="{{ product.url }}">
+                 <div class="best-box-slider-block-img">
+                  {% if block.settings.product_img != blank %}
+                  <img src="{{ block.settings.product_img | img_url:"master" }}">
+                  {% else %}
+                  <img src="{{ product.featured_image | img_url:"master" }}">
+                  {% endif %}
+                 </div>
+                {% if block.settings.product_title != blank %}
+                 <h2>{{ block.settings.product_title}}</h2>
+                {% else %}
+                 <h2>{{ product.title }}</h2>
+                {% endif %}
+               </a>
+               <div class="product-box-price">
+                 <span>Starting from {{ product.price }}</span>
+               </div>
+               <div class='jdgm-widget jdgm-preview-badge'>
+                {{ product.metafields.judgeme.badge }}
+              </div>
+            </div>
+              <div class="product-buy-btn">
+              <a href="{{ product.url }}">{{ block.settings.buy_btn_text }}</a>
+              </div>
+             </div>
+            {% endfor %}
+         </div>
+        </div>
+      </div>
+      <div class="product-btn">
+      {% if section.settings.btn_text != blank %}
+          <a href="{{ section.settings.btn_link }}">{{ section.settings.btn_text }}</a>
+      {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function waitForFlickity(trigger, delayInterval, delayTimeout) {
+  var interval = setInterval(function () {
+    if (
+      typeof Flickity == 'function'
+    ) {
+      clearInterval(interval);
+      trigger();
+    }
+  }, delayInterval);
+  setTimeout(function () {
+    clearInterval(interval);
+  }, delayTimeout);
+}
+  
+function waitForElement(selector, trigger, delayInterval, delayTimeout) {
+  var interval = setInterval(function() {
+    if (
+      document &&
+      document.querySelector(selector) &&
+      document.querySelectorAll(selector).length > 0
+    ) {
+      clearInterval(interval);
+      trigger();
+    }
+  }, delayInterval);
+  setTimeout(function() {
+    clearInterval(interval);
+  }, delayTimeout);
+}
+waitForFlickity(function(){
+  waitForElement('.best-box-slider-wrapper', slider_wraps, 200, 15000);
+}, 50 , 15000);
+
+function slider_wraps() {
+  var main_slider = document.querySelector('.best-box-slider-wrapper');
+  var flkty = new Flickity(main_slider, {
+    // options
+    cellAlign: 'center',
+    contain: true,
+    wrapAround: true,
+    watchCSS: true,
+    pageDots: false,
+    prevNextButtons: false
+  });
+}
+</script>
+
+
+{% schema %}
+  {
+    "name": "Best Box PRoduct",
+    "settings": [
+      {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+      },
+      {
+          "type": "textarea",
+          "id": "description",
+          "label": "Discription"
+      },
+      {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button Text"
+      },
+      {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Button Link"
+      },
+      {
+        "type": "header",
+        "content": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 36
+      }
+    ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_img",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "product_title",
+          "label": "Product Title"
+        },
+        {
+          "type": "text",
+          "id": "buy_btn_text",
+          "label": "Buy Button Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Best Box PRoduct",
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}
