@@ -1,0 +1,166 @@
+Section-img: https://tinyurl.com/279zegyn
+
+<div class="logo-marquee-slider">
+    <div class="logo-marquee-container">
+        <div class="logo-marquee-main">
+            <div class="logo-marquee-wrapper marquee-slider">
+                {% for block in section.blocks %}
+                    <div class="logo-marquee-item"> 
+                        <div class="logo-with-text">
+                            {% if block.settings.slider_logo_image != blank %}
+                                <div class="slider-logo">
+                                    <img src="{{ block.settings.slider_logo_image | img_url: '37x' }}" alt="{{ block.settings.slider_logo_image.alt }}">
+                                </div>
+                            {% endif %}
+                            {% if block.settings.title != blank %}
+                                <div class="slider-text">
+                                    <h4>{{ block.settings.title }}</h4>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+  (function () {
+    function waitForFlickity(trigger, delayInterval, delayTimeout) {
+        var interval = setInterval(function () {
+            if (
+                typeof Flickity == 'function'
+            ) {
+                clearInterval(interval);
+                trigger();
+            }
+        }, delayInterval);
+        setTimeout(function () {
+            clearInterval(interval);
+        }, delayTimeout);
+    }
+  
+    function waitForElement(selector, trigger, delayInterval, delayTimeout) {
+        var interval = setInterval(function() {
+            if (
+                document &&
+                document.querySelector(selector) &&
+                document.querySelectorAll(selector).length > 0
+            ) {
+                clearInterval(interval);
+                trigger();
+            }
+        }, delayInterval);
+        setTimeout(function() {
+            clearInterval(interval);
+        }, delayTimeout);
+    }
+    waitForFlickity(function(){
+        waitForElement('.marquee-slider', marqueeLogo, 200, 15000);
+    }, 50 , 15000);
+
+    function marqueeLogo() {
+        let marqueeSlider = document.querySelector('.marquee-slider');
+        let mainTicker = new Flickity('.marquee-slider', {
+            accessibility: true,
+            resize: true,
+            wrapAround: true,
+            prevNextButtons: false,
+            pageDots: false,
+            percentPosition: true,
+            setGallerySize: true,
+        });
+
+        // Set initial position to be 0
+        mainTicker.x = 0;
+
+        // Start the marquee animation
+        play();
+
+        // Main function that 'plays' the marquee.
+        function play() {
+            // Set the decrement of position x
+            mainTicker.x -= 2.5;
+
+            // Settle position into the slider
+            mainTicker.settle(mainTicker.x);
+
+            // Set the requestId to the local variable
+            requestId = window.requestAnimationFrame(play);
+        }
+    }
+})();
+</script>
+
+{% schema %}
+    {
+      "name": "Logo Animitated",
+      "class": "logo-animitated-section",
+      "settings": [
+
+      ],
+    "blocks": [
+        {
+            "type": "text",
+            "name": "Logo Animitated",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "slider_logo_image",
+                    "label": "Logo Image"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Slider Text"
+                }
+            ]
+        }
+    ],
+      "presets": [
+            {
+                "name": "Logo Animitated",
+                "category": "Logo",
+                "settings": {
+                }
+            }
+        ]
+    }
+{% endschema %}
+
+/* styling start for logo-animitated-section*/
+.logo-animitated-section .logo-marquee-slider {
+    background: #A9DD72;
+}
+.logo-animitated-section .logo-marquee-wrapper {
+    width: 100%;
+}
+.logo-animitated-section .logo-marquee-item {
+    padding: 20px 0px;
+    width: 400px;
+}
+.logo-animitated-section .logo-with-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+.logo-animitated-section .slider-text h4 {
+    font-family: SemplicitaPro-semi;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 29.92px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.logo-animitated-section .slider-logo{
+    margin-right: 15px;
+}
+.logo-animitated-section .slider-logo img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+/* styling end for logo-animitated-section */
