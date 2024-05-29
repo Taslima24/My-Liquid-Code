@@ -1,0 +1,211 @@
+<div class="customer-review">
+  <div class="page-width">
+    <div class="customer-review-main">
+      {% if section.settings.title %}
+      <h2 class="heading">
+        {{ section.settings.title }}
+      </h2>
+      {% endif %}
+      <div class="customer-review-content main-carousel">
+        {% for block in section.blocks %}
+        <div class="customer-review-item carousel-cell">
+           <div class="customer-review-img">
+             {% if block.settings.review_img %}
+             <img src="{{ block.settings.review_img | img_url:"master"}}"/>
+             {% endif %}
+           </div>
+          {% if block.settings.review_title %}
+          <h2 class="review-title"> {{ block.settings.review_title }}</h2>
+          {% endif %}
+          {% if block.settings.review_description %}
+          <p class="review-description">{{ block.settings.review_description }}</p>
+          {% endif %}
+          {% if block.settings.author_name %}
+          <h3 class="author-name">{{ block.settings.author_name }} <span>Verified Buyer</span></h3>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+
+
+<script>
+$(document).ready(function(){
+  $('.main-carousel').flickity({
+  // options
+   cellAlign: 'center',
+    contain: true,
+    wrapAround: true,
+    watchCSS: true,
+    pageDots: false,
+    prevNextButtons: false
+});
+});
+</script>
+
+<style>
+h2.heading {
+    font-family: Acherus Grotesque;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 44px;
+    text-align: center;
+    color: #42613B;
+    margin-bottom: 60px;
+}
+.customer-review-content {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+}
+.customer-review-item.carousel-cell {
+    width: 33.33%;
+    background: #5EB1A1;
+    padding: 20px 46px;
+}
+.customer-review {
+    padding: 20px 0;
+    background: #EFF7F6;
+}
+.customer-review-img img {
+    width: 100%;
+    height: 100%;
+}
+.customer-review-img {
+    max-width: 80px;
+    margin: 0 auto;
+}
+h2.review-title {
+    font-family: Acherus Grotesque;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+}
+p.review-description {
+    font-family: Acherus Grotesque;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    max-width: 355px;
+    margin: 0 auto;
+}
+h3.author-name {
+    font-family: Acherus Grotesque;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 0;
+    margin-top: 30px;
+}
+.main-carousel:after {
+  content: 'flickity';
+  display: none; /* hide :after */
+}
+h3.author-name span {
+    font-family: Acherus Grotesque;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: center;
+}
+@media screen and ( min-width: 750px ) {
+  .main-carousel:after {
+      content: '';
+  }
+  .customer-review-content {
+    display: flex;
+  } 
+}
+@media only screen and (max-width:749px){
+  .customer-review-item.carousel-cell {
+    width: 85%;
+    margin-right: 15px;
+  }
+  .customer-review .page-width {
+    padding: 0;
+ }
+  h2.heading {
+    font-size: 24px;
+    line-height: 40px;
+    padding: 0 10px;
+            margin-top: 0;
+ }
+  h2.review-title {
+    font-size: 16px;
+  }
+  p.review-description {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  h3.author-name {
+    font-size: 14px;
+    line-height: 30px;
+  }
+  .customer-review {
+    padding: 10px 0;
+    
+ }
+}
+</style>
+
+
+{% schema %}
+  {
+    "name": "Customer Review",
+    "settings": [
+      {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+     }
+    ],
+    "blocks": [
+      {
+      "type": "review",
+      "name": "Review",
+        "settings": [
+        {
+          "type": "image_picker",
+          "id": "review_img",
+          "label": "Review Image"
+        },
+        {
+          "type": "text",
+          "id": "review_title",
+          "label": "Review Title"
+        },
+        {
+          "type": "textarea",
+          "id": "review_description",
+          "label": "Review Descriptiion"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name"
+        }
+      ]
+      }
+    ],
+  "presets": [
+    {
+      "name": "Customer Review"
+    }
+  ]
+  }
+{% endschema %}
+
