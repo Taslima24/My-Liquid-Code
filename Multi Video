@@ -1,0 +1,286 @@
+section-img: https://tinyurl.com/22pcjerl
+
+<div class="testimonial-video {% if section.settings.subheading != blank or section.settings.title_1 != blank or section.settings.content != blank %}section-padding-top{% endif %}">
+  <div class="container">
+  <div class="section__header prose">
+    <div class="review-img">
+      <img src="{{ section.settings.review_img | img_url:"master" }}"/>
+    </div>
+    {% if section.settings.title != blank %}
+      <h2 class="h1 header__title">
+        {{ section.settings.title }}
+      </h2>
+    {% endif %}
+  </div>
+  <div class="testimonial-video-wrap main-carousel">
+    {%- for block in section.blocks -%}
+      <div class="social-card carousel-cell social-card-{{block.id}}" {{ block.shopify_attributes }}>
+        <div class="social-card__video">
+          <div class="video__overlay">
+            {% if block.settings.thumb_image != blank %}
+              <img src="{{ block.settings.thumb_image | img_url:"master" }}"/>
+            {% else %}
+              {{ 'image' | placeholder_svg_tag }}
+            {% endif %}
+
+            {% if block.settings.video != blank %}
+              <button class="absolute" data-play-social-proof-video>
+                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="25" cy="25" r="25" fill="white" fill-opacity="0.5"/>
+                <path d="M38.5 24.75L17.875 36.6578L17.875 12.8421L38.5 24.75Z" fill="white"/>
+                </svg>
+              </button>  
+            {% endif %}
+          </div>
+          {% if block.settings.video != blank %}
+            {{- block.settings.video | video_tag: playsinline: true, muted: false, loop: false, controls: true, preload: 'none', class: '' -}}
+          {% endif %}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    var playButtons = document.querySelectorAll("[data-play-social-proof-video]");
+    if(playButtons.length) {
+      playButtons.forEach(function (btn) {
+        btn.addEventListener("click", function(e){
+          e.preventDefault();
+          var video = this.parentElement.parentElement.querySelector("video");
+  
+          this.parentElement.parentElement.classList.add("video-active");
+          video.play();
+          video.addEventListener("ended", function() {
+            this.parentElement.classList.remove("video-active");
+          })
+        })
+      })
+    }
+  })
+</script>
+
+<script>
+  function waitForFlickity(trigger, delayInterval, delayTimeout) {
+  var interval = setInterval(function () {
+    if (
+      typeof Flickity == 'function'
+    ) {
+      clearInterval(interval);
+      trigger();
+    }
+  }, delayInterval);
+  setTimeout(function () {
+    clearInterval(interval);
+  }, delayTimeout);
+}
+  
+function waitForElement(selector, trigger, delayInterval, delayTimeout) {
+  var interval = setInterval(function() {
+    if (
+      document &&
+      document.querySelector(selector) &&
+      document.querySelectorAll(selector).length > 0
+    ) {
+      clearInterval(interval);
+      trigger();
+    }
+  }, delayInterval);
+  setTimeout(function() {
+    clearInterval(interval);
+  }, delayTimeout);
+}
+waitForFlickity(function(){
+  waitForElement('.main-carousel', Promoslider, 200, 15000);
+}, 50 , 15000);
+
+function Promoslider() {
+  var Promosliders = document.querySelector('.main-carousel');
+  var flkty = new Flickity(Promosliders, {
+    // options
+    cellAlign: 'left',
+    contain: true,
+    wrapAround: true,
+    watchCSS: true,
+    pageDots: false,
+    prevNextButtons: false
+  });
+}
+</script>
+
+{% schema %}
+{
+  "name": "Testimonial Video",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_img",
+      "label": "Review Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "thumb_image",
+          "label": "Thumbnail Image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Video",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+/*styling start for testimonial-video*/
+.main-carousel:after {
+  content: 'flickity';
+  display: none; /* hide :after */
+}
+.testimonial-video .review-img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    max-width: 158px;
+    max-height: 30px;
+    margin: 0 auto;
+}
+h2.h1.header__title {
+    font-family: SemplicitaPro;
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 70px;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 15px;
+}
+.section__header.prose {
+    text-align: center;
+}
+.testimonial-video {
+    padding-bottom: 50px;
+}
+
+  /* card */
+  
+  .social-card__video {
+    position: relative;
+    aspect-ratio: 9 / 16;
+  }
+
+  .social-card__video .video__overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .social-card__video .video__overlay img,
+  .social-card__video .video__overlay svg {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: center;
+  }
+
+  .social-card__video .video__overlay button.absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -51%);
+  }
+
+  .social-card__video video,
+  .social-card__video.video-active .video__overlay {
+    display: none;
+    border-radius: 50px;
+  }
+  .social-card__video.video-active video {
+    display: block;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+.review-img {
+    max-width: 158px;
+    margin: 0 auto;
+}
+.review-img img {
+    width: 100%;
+    height: 100%;
+}
+@media screen and ( min-width: 768px ) {
+  .main-carousel:after {
+    content: '';
+  }
+  .social-card {
+    border-radius: 13px;
+    overflow: hidden;
+    margin-right: 20px;
+    width: 25%;
+  }
+  .testimonial-video-wrap {
+    display: flex;
+}
+}
+@media screen and ( max-width: 767px ) {
+.testimonial-video .container {
+    margin: 0 auto;
+    padding: 0;
+}
+.section__header.prose {
+    padding: 0 10px;
+}
+.social-card {
+    width: 80% !important;
+    margin-right: 15px;
+  }
+  h2.h1.header__title {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+/*styling start for testimonial-video*/
