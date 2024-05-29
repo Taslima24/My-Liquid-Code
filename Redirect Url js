@@ -1,0 +1,12 @@
+ <script>
+     // JavaScript code to redirect every page to a specific URL, excluding checkout and cart pages
+      const currentUrl = window.location.href;
+      const checkoutPage = "https://wiregrasswellness.com/checkout";
+      const cartPage = "https://wiregrasswellness.com/cart";
+      const targetPage = "https://wiregrasswellness.com/pages/squeeze";
+      
+      if (currentUrl !== targetPage && !currentUrl.includes(checkoutPage) && !currentUrl.includes(cartPage)) {
+          window.location.href = targetPage;
+      }
+
+    </script> 
